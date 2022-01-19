@@ -1,4 +1,6 @@
 
+import java.util.Scanner;
+
 public class Modelo implements Radio {
 
 	// Datos y variables
@@ -6,6 +8,7 @@ public class Modelo implements Radio {
 	private boolean on;
 	private double station;
 	private boolean frequency; // true = AM; false = FM
+	private double[] favoritos  = new double[12];
 	
 	
 	@Override
@@ -67,13 +70,13 @@ public class Modelo implements Radio {
 	@Override
 	public void saveStation(int position, double station) {
 		// TODO Auto-generated method stub
-		
+		favoritos[position]=station;
 	}
 
 	@Override
 	public double getSavedStation(int position) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return favoritos[position];
 	}
 
 	@Override

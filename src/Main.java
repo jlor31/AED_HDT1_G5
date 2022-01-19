@@ -50,7 +50,7 @@ static void prompt() {
 			
 			if (seleccion == 2) {
 				
-				System.out.println("---------FIN DE LA TRANSMISIÓN----------");
+				System.out.println("---------FIN DE LA TRANSMISIï¿½N----------");
 				
 			}
 			
@@ -122,7 +122,8 @@ static void opciones() {
 				2. PARA REGRESAR A LA FRECUENCIA ANTERIOR
 				3. PARA CAMBIAR DE BANDA (AM/FM)
 				4. PARA GUARDAR UNA FRECUENCIA
-				5. PARA APAGAR EL RADIO
+				5. PARA VER FRECUENCIAS GUARDADAS.
+				6. PARA APAGAR EL RADIO
 
 			-----------------------------------------------------------
 			
@@ -169,15 +170,44 @@ static void opciones() {
 		}
 		
 		if (seleccion == 4) { // pediente implementar posibilidad de guardar favoritos
-			// aqui deberia de ir el metodo para guardar
-			estadoRadio();
+			int a = 0;
+			int op = 0;
+			
+			while (a != 100){
+				try {
+					System.out.println("Indique en que favorito quiere guardarlo, seleccione de 1 a 12");
+					op = in.nextInt();
+				} catch (Exception e) {
+					System.err.println("Ingrese solo un numero de 1 a 12");
+					continue;
+				}
+				if (op > 0 || op <13){
+					a = 100;
+					break;
+				} else{
+					System.err.println("Ingrese solo un numero de 1 a 12");
+					continue;
+				}
+			}
+			int pos = op-1;
+			Double s = modelo.getStation();
+			modelo.saveStation(pos, s);
 			opciones();
 		}
-		
-		if (seleccion == 5) {
+		if (seleccion == 5){
+			System.out.println("Estaciones guardadas:\n");
+	
+			for (int a = 0; a < 12; a++){
+				System.out.println((a+1)+" "+modelo.getSavedStation(a));
+			}
+			opciones();
+			
+
+		}
+		if (seleccion == 6) {
 			
 			System.out.println(" ");
-			System.out.println("---------FIN DE LA TRANSMISIÓN----------");
+			System.out.println("---------FIN DE LA TRANSMISIï¿½N----------");
 			
 		}
 		
