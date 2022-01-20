@@ -59,15 +59,17 @@ public class Modelo implements Radio {
 	@Override
 	public void nextStation(boolean frequency) {
 		if (frequency == false) {
+			
 			station = station +0.2; //  los incrementos en el espectro fm se hacen de 0.2 MHz en 0.2 MHz, entre 88 y 108
-			if (station >= 108) {
+			if (station > 108) {
 				station = 88.0;
 			}
 		}
+		
 		if (frequency == true) {
 			
 			station = station +20; //  los incrementos en el espectro am se hacen de 20 kHz en 20 kHz, entre 540 y 1700
-			if (station >= 1700) {
+			if (station > 1700) {
 				station = 540 ;
 			}
 		}
@@ -80,17 +82,19 @@ public class Modelo implements Radio {
      */
 	@Override
 	public void prevStation(boolean frequency) {
-		if (frequency == false) {
-			station = station - 0.2; //  los incrementos en el espectro fm se hacen de 0.2 MHz en 0.2 MHz, entre 88 y 108
-			if (station <= 88.0) {
-				station = 108.0;
+		if (getFrequency() == false) {
+			
+			station = getStation() - 0.20; //  los incrementos en el espectro fm se hacen de 0.2 MHz en 0.2 MHz, entre 88 y 108
+			if (station < 88) {
+				station = 108;
 			}
 		}
-		if (frequency == true) {
+		
+		if (getFrequency()==true) {
 			
 			station = station - 20; //  los incrementos en el espectro am se hacen de 20 kHz en 20 kHz, entre 540 y 1700
-			if (station <= 540) {
-				station = 1700 ;
+			if (station < 540) {
+				station = 1700;
 			}
 		}
 		
@@ -122,7 +126,7 @@ public class Modelo implements Radio {
 	/**
      * Este metodo cambia a una de las estaciones guardadas y regresa la misma estación
      * 
-     * @param position int que indica la posicion de la estación que se quiere escuchar
+     * @param position int que indica la posicion de la estacion que se quiere escuchar
      */
 	@Override
 	public double getSavedStation(int position) {
@@ -146,11 +150,11 @@ public class Modelo implements Radio {
      */
 	@Override
 	public void switchAMFM() {
+		
 		if (frequency == true) {
 			frequency = false;
 			station = 88.0;
-		}
-		if (frequency == false) {
+		} else {
 			frequency = true;
 			station = 540;
 		}

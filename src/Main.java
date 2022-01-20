@@ -24,7 +24,7 @@ static void prompt() {
 		
 		Scanner in = new Scanner(System.in);
 		
-		modelo.nextStation(modelo.getFrequency());
+		
 		
 		
 		System.out.print(""" 
@@ -64,7 +64,7 @@ static void prompt() {
 			
 			if (seleccion == 2) {
 				
-				System.out.println("---------FIN DE LA TRANSMISI�N----------");
+				System.out.println("---------FIN DE LA TRANSMISION----------");
 				
 			}
 			
@@ -129,9 +129,9 @@ static void estadoRadio() {
  */	
 static void opciones() {
 	
-	Scanner in = new Scanner(System.in);
+	Scanner input = new Scanner(System.in);
 	
-	modelo.nextStation(modelo.getFrequency());
+	
 	
 	
 	System.out.print(""" 
@@ -142,7 +142,7 @@ static void opciones() {
 				2. PARA REGRESAR A LA FRECUENCIA ANTERIOR
 				3. PARA CAMBIAR DE BANDA (AM/FM)
 				4. PARA GUARDAR UNA FRECUENCIA
-				5. PARA VER FRECUENCIAS GUARDADAS.
+				5. PARA SELECCIONAR UN FAVORITO.
 				6. PARA APAGAR EL RADIO
 
 			-----------------------------------------------------------
@@ -155,9 +155,9 @@ static void opciones() {
 	
 	try {
 		
-		seleccion = in.nextInt();
+		seleccion = input.nextInt();
 		
-		if (seleccion < 1 || seleccion > 5 ) { 
+		if (seleccion < 1 || seleccion > 6 ) { 
 			
 			System.out.println("LA SELECCION INGRESADA ES INVALIDA - VOLVIENDO AL MENU PRINCIPAL");
 			prompt();
@@ -189,14 +189,14 @@ static void opciones() {
 			
 		}
 		
-		if (seleccion == 4) { // pediente implementar posibilidad de guardar favoritos
+		if (seleccion == 4) { 
 			int a = 0;
 			int op = 0;
 			
 			while (a != 100){
 				try {
 					System.out.println("Indique en que favorito quiere guardarlo, seleccione de 1 a 12");
-					op = in.nextInt();
+					op = input.nextInt();
 				} catch (Exception e) {
 					System.err.println("Ingrese solo un numero de 1 a 12");
 					continue;
@@ -212,6 +212,7 @@ static void opciones() {
 			int pos = op-1;
 			Double s = modelo.getStation();
 			modelo.saveStation(pos, s);
+			estadoRadio();
 			opciones();
 		}
 		if (seleccion == 5){
@@ -220,7 +221,7 @@ static void opciones() {
 			while (a != 100){
 				try {
 					System.out.println("Indique que favorito quiere usar, seleccione de 1 a 12");
-					op = in.nextInt();
+					op = input.nextInt();
 				} catch (Exception e) {
 					System.err.println("Ingrese solo un numero de 1 a 12");
 					continue;
@@ -234,7 +235,8 @@ static void opciones() {
 				}
 			}
 			int s = op-1;
-			System.out.println("Estación seleccionada: "+modelo.getSavedStation(s));
+			System.out.println("Estacion seleccionada: "+modelo.getSavedStation(s));
+			estadoRadio();
 			opciones();
 			
 
@@ -242,7 +244,7 @@ static void opciones() {
 		if (seleccion == 6) {
 			
 			System.out.println(" ");
-			System.out.println("---------FIN DE LA TRANSMISI�N----------");
+			System.out.println("---------FIN DE LA TRANSMISION----------");
 			
 		}
 		
