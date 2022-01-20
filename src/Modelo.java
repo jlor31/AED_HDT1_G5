@@ -75,7 +75,7 @@ public class Modelo implements Radio {
 
 	@Override
 	public double getSavedStation(int position) {
-		
+		station = favoritos[position];
 		return favoritos[position];
 	}
 

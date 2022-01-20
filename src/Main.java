@@ -195,11 +195,26 @@ static void opciones() {
 			opciones();
 		}
 		if (seleccion == 5){
-			System.out.println("Estaciones guardadas:\n");
-	
-			for (int a = 0; a < 12; a++){
-				System.out.println((a+1)+" "+modelo.getSavedStation(a));
+			int a = 0;
+			int op = 0;
+			while (a != 100){
+				try {
+					System.out.println("Indique que favorito quiere usar, seleccione de 1 a 12");
+					op = in.nextInt();
+				} catch (Exception e) {
+					System.err.println("Ingrese solo un numero de 1 a 12");
+					continue;
+				}
+				if (op > 0 || op <13){
+					a = 100;
+					break;
+				} else{
+					System.err.println("Ingrese solo un numero de 1 a 12");
+					continue;
+				}
 			}
+			int s = op-1;
+			System.out.println("Estación seleccionada: "+modelo.getSavedStation(s));
 			opciones();
 			
 
