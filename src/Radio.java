@@ -1,3 +1,11 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Hoja de trabajo 1
+ * File: Radio
+ * @author Juan Miguel González-Campo 21077
+ * @author Aarón Beltran 21092
+ * @author Juan Lorthiois 18771
+ */
 
 public interface Radio {
 	   /**

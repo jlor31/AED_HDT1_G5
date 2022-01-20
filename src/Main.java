@@ -1,3 +1,14 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Hoja de trabajo 1
+ * File: Main
+ * @author Juan Miguel González-Campo 21077
+ * @author Aarón Beltran 21092
+ * @author Juan Lorthiois 18771
+ */
+
+ 
+ /*Imports */
 import java.util.Scanner;
 
 public class Main {
@@ -5,7 +16,10 @@ public class Main {
 static Modelo modelo = new Modelo();
 	
 	
-	
+/**
+ * Este metodo es el menu inicial cuando si inicial la aplicación.
+ * 
+ */	
 static void prompt() {
 		
 		Scanner in = new Scanner(System.in);
@@ -67,7 +81,10 @@ static void prompt() {
 		
 	}
 
-
+/**
+ * Este metodo indica que esta sucediendo en la radio, si esta encendida, en que frecuenca y estación se encuentra.
+ * 
+ */
 static void estadoRadio() {
 	
 	String banda; 
@@ -106,7 +123,10 @@ static void estadoRadio() {
 }
 
 
-	
+/**
+ * Menu secundario de la consola, donde se puede interactuar con la radio.
+ * 
+ */	
 static void opciones() {
 	
 	Scanner in = new Scanner(System.in);
@@ -242,7 +262,10 @@ static void opciones() {
 	
 	
 	
-	
+/**
+ * Este metodo es el driver del programa, llama al metodo prompt, que lo inicia. 
+ * 
+ */	
 public static void main(String args[]) {
 		
 		prompt();
